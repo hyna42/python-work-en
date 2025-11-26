@@ -19,3 +19,6 @@ print(type({4}))
 
 #3. isInstance(<object>, <classInfo>)
 print("test valeur de vérité : 4 === string ? ", isinstance(4,int))
+
+################### EXERCICE
+print("type de 48.84894381840422 ==> ", type(48.84894381840422))
