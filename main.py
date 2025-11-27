@@ -1,34 +1,33 @@
 ###### EP12 - MODULES ######
 
-# (1) module : cest un fichier .py (exemple main.py est un module)
 
 """
- import module_name ==> importe tout le module
-    use : module_name.paquet
+# il existe 2 types d'erreurs en python : 
+    1. Les erreurs (irrécupérables) : lors du développement : débogage
+        -> sont gérées avec les ASSERTIONS , via le mot clé assert
 
- from module_name import paquet
+    2. les erreurs d'exécution (valider les données utiliateurs, gérer les ressources). 
+        -> on utilise le bloc de code `try except` pour englober le code qui peut etre la source de l'erreur
+
 """
-  
-# import modules 
-from something import say_hello , get_max_number
-from something import return_sum_of_two_numbers as sum
-
-#import paquet
-from calcul.operations import addition,soustraction,multiplication,division
-
-#################### MAIN #####################
-say_hello()
-print(get_max_number(4,8))
-print("sum:",sum(4,6))
-
-if __name__ == '__main__':
-    print("Je suis dans main")
 
 
-# (2) paquet : c'est un dossier contenant 1 fichier __init__.py et un et modules (.py files): exemple => paquet /calcul
-print(addition(4,9))
-print(soustraction(8,6))
-print(soustraction(7,6))
-print(division(5,0))
+# (1) - Erreurs irrecuperables
+#Exemple d'assertion
+def record_party(number_of_players):
+    assert 0 < number_of_players <= 10, "Nombre de participants entre 0 et 10"
+    print("Assertion de",number_of_players,"joueurs")
+
+record_party(1)
 
 
+# (2) Erreur d'éxécution
+players_strength = 100
+bonus =0
+try:
+    bonus = int(input("appliquer un bonus : "))
+except Exception as err:
+    print("Le bonus est incorect",type(err))
+else:
+    players_strength += bonus
+print("FORCE :",players_strength)
