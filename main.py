@@ -1,39 +1,16 @@
-###### CONDITIONS ######
+###### BOUCLES ######
 
-#1. if-elif-else
-access = True
-access = 1
+#.1 while
+"""
+break -> sort de la boucle
+continue -> relancer tout de suite une itération (ne pas exécuter la suite)
 
-
-
-print("1" == 1)
-
-if access:
-    print("Vous pouvez passer")
+"""
+i=0
+while i < 5:
+    # if i==3:
+    #     continue
+    print("hello",i+1,"time")
+    i+=1
 else:
-    print("Ohhhhh")
-
-
-#2. match-case - depuis python 3.10
-"""
-    peut travailler sur des motifs
-"""
-role = "adminx"
-match role:
-    case "admin" | "user":
-        print("can access site")
-    case "visitor":
-        print("can register")
-    case _:
-        print("Unknown status")
-
-#exemple 2 :using motifs
-# loto = [13, 45, 5, 1]
-loto = [13, 45, 8, 26, 1]
-match loto:
-    case [13, 45, 8, 26, 3]:
-        print("Vous avez gagné le gros lot !")
-    case [13, 45, 8, n1, n2] if n1 > 10:
-        print("Vous avons 3 numéros sur les 5")
-    case _:
-        print("Mort, mort mort...")   
+    print("fin de la boucle") #while can use else , execute at end when false
