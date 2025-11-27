@@ -10,4 +10,24 @@ def print_menu():
 
 print_menu()
 
-# (2) 
+# (2) fonction avec paramètre obligatoire
+
+def says(author, message):
+    print(author, ":", message)
+
+says("Amadou","hello world")
+says("Baye","dieuredieufé Niass")
+
+# (3) fonction avec paramètre optionnels
+def create_player(name,level=1):
+    print(name, "de niveau",level)
+
+create_player("Chuck",7)
+create_player("Daddy")
+
+# (4) fonction renvoyant un résultat
+def sum_integer(a,b):
+    return a + b
+result = sum_integer(4,'8')
+print(type(result))
+print(result)
