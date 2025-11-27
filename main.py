@@ -30,4 +30,9 @@ except Exception as err:
     print("Le bonus est incorect",type(err))
 else:
     players_strength += bonus
-print("FORCE :",players_strength)
+finally:
+    #lever une exception le le score dépasse 200, ensuite ramener le nb a 200
+    if players_strength > 200:
+        players_strength = 200
+        raise ValueError("Niveau maximum de Force atteint.")
+    print("FORCE :",players_strength)
