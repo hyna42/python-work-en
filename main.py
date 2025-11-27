@@ -26,3 +26,14 @@ match role:
         print("can register")
     case _:
         print("Unknown status")
+
+#exemple 2 :using motifs
+# loto = [13, 45, 5, 1]
+loto = [13, 45, 8, 26, 1]
+match loto:
+    case [13, 45, 8, 26, 3]:
+        print("Vous avez gagné le gros lot !")
+    case [13, 45, 8, n1, n2] if n1 > 10:
+        print("Vous avons 3 numéros sur les 5")
+    case _:
+        print("Mort, mort mort...")   
