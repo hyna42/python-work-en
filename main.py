@@ -14,3 +14,8 @@ while i < 5:
     i+=1
 else:
     print("fin de la boucle") #while can use else , execute at end when false
+
+#2. for
+name = "Baye"
+for n in name:
+    print(n)
