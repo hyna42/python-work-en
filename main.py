@@ -28,6 +28,10 @@ create_player("Daddy")
 # (4) fonction renvoyant un résultat
 def sum_integer(a,b):
     return a + b
-result = sum_integer(4,'8')
+result = sum_integer(4,8)
 print(type(result))
 print(result)
+
+# (5) fonction anonyme
+double = lambda n : n*2
+print(double(2))
