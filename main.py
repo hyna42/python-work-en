@@ -1,6 +1,6 @@
 ###### EP12 - MODULES ######
 
-# module - paquet
+# (1) module : cest un fichier .py (exemple main.py est un module)
 
 """
  import module_name ==> importe tout le module
@@ -19,3 +19,6 @@ print("sum:",sum(4,6))
 
 if __name__ == '__main__':
     print("Je suis dans main")
+
+
+# (2) paquet : c'est un dossier contenant 1 fichier __init__.py et un et modules (.py files): exemple => paquet /calcul
