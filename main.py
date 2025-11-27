@@ -1,38 +1,58 @@
-###### EP12 - MODULES ######
-
-
+###### EP14 - DECORATEURS ######
 """
-# il existe 2 types d'erreurs en python : 
-    1. Les erreurs (irrécupérables) : lors du développement : débogage
-        -> sont gérées avec les ASSERTIONS , via le mot clé assert
-
-    2. les erreurs d'exécution (valider les données utiliateurs, gérer les ressources). 
-        -> on utilise le bloc de code `try except` pour englober le code qui peut etre la source de l'erreur
-
+    le décorateur @ va changer le comportement d'une fonction (la fonction décorée) sans modifier le comportement de celle-ci
 """
+import sys
+#Exemple 1
+def logger(func):
+    def wrapper(*args, **kwargs):
+        print("Appel de la fonction",func.__name__)
+        return func(*args, **kwargs)
+    return wrapper
 
 
-# (1) - Erreurs irrecuperables
-#Exemple d'assertion
-def record_party(number_of_players):
-    assert 0 < number_of_players <= 10, "Nombre de participants entre 0 et 10"
-    print("Assertion de",number_of_players,"joueurs")
-
-record_party(1)
+@logger
+def hello():
+    print("says hello")
 
 
-# (2) Erreur d'éxécution
-players_strength = 100
-bonus =0
-try:
-    bonus = int(input("appliquer un bonus : "))
-except Exception as err:
-    print("Le bonus est incorect",type(err))
-else:
-    players_strength += bonus
-finally:
-    #lever une exception le le score dépasse 200, ensuite ramener le nb a 200
-    if players_strength > 200:
-        players_strength = 200
-        raise ValueError("Niveau maximum de Force atteint.")
-    print("FORCE :",players_strength)
+@logger
+def sum(a,b):
+    return a + b
+
+
+hello()
+print(sum(1,3))
+
+
+#Exemple 2
+"""
+    L'idée ici c'est de créer un décorateur qui limite le nombre de compression possible à n fois (pour les utilisateurs non-premium)
+"""
+def limit_use(max_uses=1):
+    def decorateur(func):
+        func.number_uses = 0
+
+        def wrapper(*args,**kwargs):
+            if func.number_uses >= max_uses:
+                print("Limite atteinte en tant qu'utilisateur gratuit",file=sys.stderr)
+                return None
+            func.number_uses += 1
+            return func(*args,**kwargs)
+        return wrapper
+    return decorateur
+
+
+
+
+@limit_use(3)
+def compress_pdf():
+    print("Compression d'un document PDF ...")
+
+def join_pdf():
+    print("Fusion d'un document PDF ...")
+
+
+for i in range(0,5):
+    compress_pdf()
+    join_pdf()
