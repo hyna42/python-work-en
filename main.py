@@ -11,7 +11,7 @@
 
 """
 
-
+print("*"*50)
 # (1) - Erreurs irrecuperables
 #Exemple d'assertion
 def record_party(number_of_players):
@@ -20,7 +20,7 @@ def record_party(number_of_players):
 
 record_party(1)
 
-
+print("*"*50)
 # (2) Erreur d'éxécution
 players_strength = 100
 bonus =0
@@ -36,3 +36,19 @@ finally:
         players_strength = 200
         raise ValueError("Niveau maximum de Force atteint.")
     print("FORCE :",players_strength)
+
+print("*"*50)
+# (3) : il est possible de lever explicitement une exception avec le mot-clé 'raise', pour signale qu'une condition anormale s'est produite et de transférer le contrôle au bloc except
+def verify_age(age):
+    if age < 0:
+        raise ValueError("L'âge ne peut pas être négatif.")
+    elif age < 18:
+        print("Vous êtes mineur.")
+    else:
+        print("Vous êtes majeur.")
+
+
+try:
+    verify_age(-14)
+except ValueError as e:
+    print(f"Erorr : {e}")
